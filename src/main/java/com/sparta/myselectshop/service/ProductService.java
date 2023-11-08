@@ -82,6 +82,7 @@ public class ProductService {
         product.updateByItemDto(itemDto);
     }
 
+    @Transactional(readOnly = true)
     public List<ProductResponseDto> getAllProducts() {
         List<Product> productList = productRepository.findAll();
         List<ProductResponseDto> responseDtoList = new ArrayList<>();
