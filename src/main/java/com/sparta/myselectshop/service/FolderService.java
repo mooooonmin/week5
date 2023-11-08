@@ -15,6 +15,7 @@ import java.util.List;
 public class FolderService {
 
     private final FolderRepository folderRepository;
+
     // 로그인한 회원에 폴더들 등록
     public void addFolders(List<String> folderNames, User user) {
 
