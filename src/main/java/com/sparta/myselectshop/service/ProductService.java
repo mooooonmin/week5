@@ -51,6 +51,7 @@ public class ProductService {
         return new ProductResponseDto(product);
     }
 
+    @Transactional(readOnly = true)
     public Page<ProductResponseDto> getProducts(User user,
                                                 int page, int size, String sortBy, boolean isAsc) {
         // 페이징 처리
@@ -91,6 +92,7 @@ public class ProductService {
         return responseDtoList;
     }
 
+    @Transactional
     public void addFolder(Long productId, Long folderId, User user) {
 
         // 1) 상품을 조회합니다.

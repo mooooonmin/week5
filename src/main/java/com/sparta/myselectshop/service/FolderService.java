@@ -6,6 +6,7 @@ import com.sparta.myselectshop.entity.User;
 import com.sparta.myselectshop.repository.FolderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ public class FolderService {
 
     private final FolderRepository folderRepository;
 
+    @Transactional
     // 로그인한 회원에 폴더들 등록
     public void addFolders(List<String> folderNames, User user) {
 
@@ -37,6 +39,7 @@ public class FolderService {
         folderRepository.saveAll(folderList);
     }
 
+    @Transactional(readOnly = true)
     // 로그인한 회원이 등록된 모든 폴더 조회
     public List<FolderResponseDto> getFolders(User user) {
         List<Folder> folderList = folderRepository.findAllByUser(user);
